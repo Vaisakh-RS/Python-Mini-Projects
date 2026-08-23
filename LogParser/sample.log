@@ -1,0 +1,21 @@
+2026-08-19 09:58:03 INFO service started successfully
+2026-08-19 10:01:15 INFO health check passed
+2026-08-19 10:03:12 ERROR db connection timeout
+2026-08-19 10:03:45 WARNING retrying db connection
+2026-08-19 10:04:02 INFO db connection restored
+2026-08-19 10:10:27 WARNING memory usage above 80 percent
+2026-08-19 10:12:51 ERROR disk write failed on /var/log/app
+2026-08-19 10:13:00 INFO scheduled backup started
+2026-08-19 10:13:44 INFO scheduled backup completed
+2026-08-19 10:20:19 ERROR unhandled exception in worker thread
+2026-08-19 10:21:05 WARNING worker thread restarted
+2026-08-19 10:25:33 INFO cache cleared
+this line is not formatted correctly and should break your parser
+2026-08-19 10:31:58 ERROR authentication failed for user svc_account
+2026-08-19 10:32:10 WARNING repeated auth failures detected
+2026-08-19 10:40:22 INFO nightly job queued
+2026-08-19 10:41:00 INFO nightly job running
+2026-08-19 10:45:37 ERROR nightly job failed exit code 1
+2026-08-19
+2026-08-19 10:50:14 INFO nightly job retried
+2026-08-19 10:51:02 INFO nightly job completed
