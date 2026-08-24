@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-import logging;
+import logging
 
 logger=logging.getLogger(__name__)
 logger.setLevel("DEBUG")
