@@ -73,7 +73,7 @@ class LogParser:
 #         entries[entry.log_level] = entries.get(entry.log_level, 0) + 1 -->"give me the current count for this key, or 0 if it doesn't exist yet"
 #     return entries
                 
-test=LogParser("D:/Py Projects/LogParser/sample.log")
-test.parse()
-print(test.log_entries)
-print(len(test.log_entries))
+Parser=LogParser("D:/Py Projects/LogParser/sample.log")
+# test.parse()
+# print(test.log_entries)
+# print(len(test.log_entries))
