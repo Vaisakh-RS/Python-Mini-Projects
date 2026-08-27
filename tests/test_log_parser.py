@@ -1,4 +1,4 @@
-from LogParser import LogEntry , LogParser
+from src.LogParser import LogEntry, LogParser
 
 def test_iserror():
     entry1=LogEntry("2026-08-19 09:58:03" ,"INFO", "service started successfully")
@@ -12,4 +12,4 @@ def test_sortbyserverity():
     parser=LogParser("test.log")
     parser.log_entries=[LogEntry("2026-08-19 09:58:03" ,"INFO", "service started successfully"),LogEntry("2026-08-19 09:58:03" ,"ERROR", "service started successfully")]
     parser_result = parser.filter_by_severity("ERROR")
-    assert parser_result==[LogEntry("2026-08-19 09:58:03" ,"INFO", "service started successfully")]
+    assert parser_result==[LogEntry("2026-08-19 09:58:03" ,"ERROR", "service started successfully")]
