@@ -1,5 +1,5 @@
-from LogParser import LogParser
-from ApiTest import fetchApi
+from src.LogParser import LogParser
+from src.ApiTest import fetchApi
 
 class Combine:
     def __init__(self):
