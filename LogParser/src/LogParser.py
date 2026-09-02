@@ -49,9 +49,7 @@ class LogParser:
                     self.log_entries.append(logs)
         except FileNotFoundError:
             logger.error(f"File not found:{self.file_path}")
-       
-
-
+    
     def filter_by_severity(self, level):
         return [entry for entry in self.log_entries if entry.log_level==level] # [ <what to put in the new list> for <item> in <iterable> if <condition> ]
 
