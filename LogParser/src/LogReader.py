@@ -1,3 +1,6 @@
+from logging_config import setup_logging
+setup_logging()
+
 import yaml
 from datetime import datetime
 from LogParser import LogParser
@@ -40,7 +43,7 @@ class LogReader:
                  time_diff=abs(x_time-y_time)
                  if time_diff.total_seconds()<=window_seconds:
                      pairs.append((x,y))
-            logger.info(f"Found {len(pairs)} correlated pairs")
+        logger.info(f"Found {len(pairs)} correlated pairs")
         return pairs
 
 test=LogReader("LogParser\config.yaml")

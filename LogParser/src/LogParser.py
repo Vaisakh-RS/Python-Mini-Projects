@@ -2,20 +2,6 @@ from dataclasses import dataclass
 import logging
 
 logger=logging.getLogger(__name__)
-logger.setLevel("DEBUG")
-
-#print to the console and to a log file
-console_handler = logging.StreamHandler()
-file_handler = logging.FileHandler("app.log", mode="a")
-
-log_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
-console_handler.setFormatter(log_formatter)
-file_handler.setFormatter(log_formatter)
-
-# 4. Bind handlers to your logger
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
-
 
 @dataclass
 class LogEntry:
