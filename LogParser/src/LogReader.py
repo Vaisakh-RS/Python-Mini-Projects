@@ -42,14 +42,20 @@ class LogReader:
                  y_time=datetime.strptime(y.timestamp,"%Y-%m-%d %H:%M:%S")
                  time_diff=abs(x_time-y_time)
                  if time_diff.total_seconds()<=window_seconds:
-                     pairs.append((x,y))
+                     pairs.append((x,y,time_diff.total_seconds()))
         logger.info(f"Found {len(pairs)} correlated pairs")
         return pairs
+
+    def format_pairs(self,pairs):
+        formatted_pairs=[]
+        for auth_entry,db_entry,time_gap in pairs:
+            formatted_pairs.append(f"[CORRELATED] auth ({auth_entry.timestamp}): {auth_entry.message} <-> database ({db_entry.timestamp}): {db_entry.message} | gap: {time_gap:.0f}s")
+        return formatted_pairs
 
 test=LogReader("LogParser\config.yaml")
 res=test.parse_all()
 auth_errors,db_errors=test.filter()
 pairs=test.pair_logs(auth_errors,db_errors)
-print(pairs)
-
-
+formatted_result=test.format_pairs(pairs)
+for line in formatted_result:
+    print(line)
