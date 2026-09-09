@@ -1,3 +1,5 @@
+from dataclasses import asdict
+import json
 from logging_config import setup_logging
 setup_logging()
 
@@ -34,6 +36,7 @@ class LogReader:
         db_logs = [entry for entry in self.result.get('database',[]) if entry.log_level in ('ERROR', 'WARNING')]
         return auth_logs,db_logs
 
+#pair two logs if they fall under the window_seconds timeframe
     def pair_logs(self,auth_errors,db_errors,window_seconds=150):
         pairs=[]
         for x in auth_errors:
@@ -46,11 +49,19 @@ class LogReader:
         logger.info(f"Found {len(pairs)} correlated pairs")
         return pairs
 
+#format the correlated logs
     def format_pairs(self,pairs):
         formatted_pairs=[]
         for auth_entry,db_entry,time_gap in pairs:
             formatted_pairs.append(f"[CORRELATED] auth ({auth_entry.timestamp}): {auth_entry.message} <-> database ({db_entry.timestamp}): {db_entry.message} | gap: {time_gap:.0f}s")
         return formatted_pairs
+
+    def export_to_json(self,pairs,output_path="correlation_report.json"):
+        pairs_dict= [{"auth_entry":asdict(auth_entry),"db_entry":asdict(db_entry),"time_gap":gap} for auth_entry,db_entry,gap in pairs]
+        with open(output_path,"w") as f:
+            json.dump(pairs_dict,f,indent=2)
+        logger.info(f"Exported {len(pairs_dict)} correlated pairs to {output_path}")
+        return pairs_dict
 
 test=LogReader("LogParser\config.yaml")
 res=test.parse_all()
@@ -59,3 +70,4 @@ pairs=test.pair_logs(auth_errors,db_errors)
 formatted_result=test.format_pairs(pairs)
 for line in formatted_result:
     print(line)
+test.export_to_json(pairs)
