@@ -58,6 +58,3 @@ class LogParser:
 #     return entries
                 
 Parser=LogParser("D:/Py Projects/LogParser/sample.log")
-# test.parse()
-# print(test.log_entries)
-# print(len(test.log_entries))
