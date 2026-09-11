@@ -1,3 +1,4 @@
+#combine the logparser results and the api call results
 from src.LogParser import LogParser
 from src.ApiTest import fetchApi
 

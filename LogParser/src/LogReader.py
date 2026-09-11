@@ -20,6 +20,7 @@ class LogReader:
     def __init__(self,config_path):
         self.config_data=load_config(config_path)
 
+#parse the log inputs from each sources
     def parse_all(self):
        self.result={}
        for source in self.config_data["sources"]:
