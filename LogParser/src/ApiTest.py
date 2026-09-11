@@ -17,6 +17,3 @@ class fetchApi:
             print(f"An error occured while calling the api - {e}")
             return None
 
-# api_call=fetchApi()
-# response=api_call.api_fetch("random")
-# print(response)

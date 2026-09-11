@@ -1,0 +1,18 @@
+2026-08-19 09:55:01 INFO auth service started
+2026-08-19 09:56:12 INFO listening on port 8443
+2026-08-19 10:02:33 WARNING failed login attempt for user jdoe
+2026-08-19 10:02:41 WARNING failed login attempt for user jdoe
+2026-08-19 10:02:55 ERROR account locked after repeated failures user jdoe
+2026-08-19 10:08:19 INFO password reset requested for user asmith
+2026-08-19 10:09:02 INFO password reset email sent
+2026-08-19 10:15:47 ERROR token validation failed expired token
+2026-08-19 10:16:03 WARNING suspicious login location detected for user rpatel
+2026-08-19 10:22:14 INFO session refreshed for user rpatel
+2026-08-19 10:30:58 ERROR database connection lost during auth check
+2026-08-19 10:31:10 WARNING retrying auth database connection
+2026-08-19 10:31:25 INFO auth database connection restored
+2026-08-19 10:40:00 INFO scheduled token cleanup started
+2026-08-19 10:40:12 INFO scheduled token cleanup completed 214 tokens removed
+this entry has no timestamp structure at all
+2026-08-19 10:48:33 ERROR unauthorized access attempt blocked
+2026-08-19 10:55:19 INFO auth service health check passed

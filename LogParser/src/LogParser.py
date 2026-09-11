@@ -2,20 +2,6 @@ from dataclasses import dataclass
 import logging
 
 logger=logging.getLogger(__name__)
-logger.setLevel("DEBUG")
-
-#print to the console and to a log file
-console_handler = logging.StreamHandler()
-file_handler = logging.FileHandler("app.log", mode="a")
-
-log_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
-console_handler.setFormatter(log_formatter)
-file_handler.setFormatter(log_formatter)
-
-# 4. Bind handlers to your logger
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
-
 
 @dataclass
 class LogEntry:
@@ -23,7 +9,6 @@ class LogEntry:
     log_level: str
     message: str
 
-#normal methods will always have self as the first parameter
     def is_error(self):
         return self.log_level.upper() =="ERROR"
 
@@ -32,6 +17,7 @@ class LogParser:
         self.file_path=file_path
         self.log_entries=[]
 
+#reads the logs and parse each line into timestamp , the log level message
     def parse(self):
         try:
             with open(self.file_path ,"r",encoding="utf-8") as file:
@@ -49,12 +35,10 @@ class LogParser:
                     self.log_entries.append(logs)
         except FileNotFoundError:
             logger.error(f"File not found:{self.file_path}")
-       
-
-
+    
     def filter_by_severity(self, level):
-        return [entry for entry in self.log_entries if entry.log_level==level] # [ <what to put in the new list> for <item> in <iterable> if <condition> ]
-
+        return [entry for entry in self.log_entries if entry.log_level==level]
+    
     def count_by_severity(self):
         entries={"ERROR":0 , "INFO":0 , "WARNING":0, "OTHER":0}
         for entry in self.log_entries:
@@ -74,6 +58,3 @@ class LogParser:
 #     return entries
                 
 Parser=LogParser("D:/Py Projects/LogParser/sample.log")
-# test.parse()
-# print(test.log_entries)
-# print(len(test.log_entries))
