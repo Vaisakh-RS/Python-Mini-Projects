@@ -1,7 +1,7 @@
 sources:
   - name: general
-    path: LogParser\input_logs\sample.log
+    path: input_logs/sample.log
   - name: auth
-    path: LogParser\input_logs\auth_service.log
+    path: input_logs/auth_service.log
   - name: database
-    path: LogParser\input_logs\database.log
+    path: input_logs/database.log

@@ -1,11 +1,11 @@
 from dataclasses import asdict
 import json
-from logging_config import setup_logging
+from src.logging_config import setup_logging
 setup_logging()
 
 import yaml
 from datetime import datetime
-from LogParser import LogParser
+from src.LogParser import LogParser
 import logging
 
 logger=logging.getLogger(__name__)
@@ -64,7 +64,7 @@ class LogReader:
         logger.info(f"Exported {len(pairs_dict)} correlated pairs to {output_path}")
         return pairs_dict
 
-test=LogReader("LogParser\config.yaml")
+test=LogReader("config.yaml")
 res=test.parse_all()
 auth_errors,db_errors=test.filter()
 pairs=test.pair_logs(auth_errors,db_errors)
